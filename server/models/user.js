@@ -9,17 +9,17 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minLength: 1,
+    minlength: 1,
     unique: true,
     validate: {
-      validator: (value) => validator.isEmail,
+      validator: validator.isEmail,
       message: '{VALUE} is not a valid email'
     }
   },
   password: {
     type: String,
-    required: true,
-    minLength: 6,
+    require: true,
+    minlength: 6
   },
   tokens: [{
     access: {
