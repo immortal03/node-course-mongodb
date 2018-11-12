@@ -18,17 +18,23 @@ const users = [{
 }, {
   _id: userTwoId,
   email: 'james@yahoo.com',
-  password: 'userTwoPass'
+  password: 'userTwoPass',
+  tokens: [{
+    access: 'auth',
+    token: jwt.sign({_id: userTwoId, access: 'auth'}, 'abc123').toString()
+  }]
 }]
 
 const todos = [{
   _id: new ObjectID(),
-  text: 'Hello 123'
+  text: 'Hello 123',
+  _creator: userOneId
 }, {
   _id: new ObjectID(),
   text: 'Goodbye 123',
   completed: true,
-  completedAt: 333
+  completedAt: 333,
+  _creator: userTwoId
 }];
 
 beforeEach((done) => {
